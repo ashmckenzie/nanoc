@@ -26,7 +26,7 @@ describe Nanoc::Int::Compiler::Stages::CompileReps::State do
 
       it 'does not change state' do
         expect { subject }
-          .not_to change { state.pending_reps }
+          .not_to change(state, :pending_reps)
       end
     end
 
@@ -39,7 +39,7 @@ describe Nanoc::Int::Compiler::Stages::CompileReps::State do
 
       it 'does not change state' do
         expect { subject }
-          .not_to change { state.pending_reps }
+          .not_to change(state, :pending_reps)
       end
     end
   end
@@ -49,21 +49,21 @@ describe Nanoc::Int::Compiler::Stages::CompileReps::State do
 
     it 'changes pending_reps' do
       expect { subject }
-        .to change { state.pending_reps }
+        .to change(state, :pending_reps)
         .from(Set.new(known_reps))
         .to(Set.new(known_reps) - [rep])
     end
 
     it 'changes live_reps' do
       expect { subject }
-        .to change { state.live_reps }
+        .to change(state, :live_reps)
         .from(Set.new)
         .to(Set.new([rep]))
     end
 
     it 'does not change completed_reps' do
       expect { subject }
-        .not_to change { state.completed_reps }
+        .not_to change(state, :completed_reps)
         .from(Set.new)
     end
   end
@@ -76,20 +76,20 @@ describe Nanoc::Int::Compiler::Stages::CompileReps::State do
 
     it 'changes pending_reps' do
       expect { subject }
-        .to change { state.pending_reps }
+        .to change(state, :pending_reps)
         .from(Set.new(known_reps))
         .to(Set.new(known_reps) - [rep])
     end
 
     it 'does not change live_reps' do
       expect { subject }
-        .not_to change { state.live_reps }
+        .not_to change(state, :live_reps)
         .from(Set.new)
     end
 
     it 'changes completed_reps' do
       expect { subject }
-        .to change { state.completed_reps }
+        .to change(state, :completed_reps)
         .from(Set.new)
         .to(Set.new([rep]))
     end
